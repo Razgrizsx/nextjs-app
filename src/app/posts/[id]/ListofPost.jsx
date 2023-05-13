@@ -1,7 +1,11 @@
 import LikeButton from "./LikeButton"
 
 const fetchPosts = () => {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
+    return fetch('https://jsonplaceholder.typicode.com/posts', { 
+        next: {
+            revalidate: 60   //refresca cada 60 segundos
+        } 
+    })
     .then(res => res.json())
 }
 
