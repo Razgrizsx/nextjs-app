@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const fetchPost = (id) => {
     return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, { 
         next: {
@@ -10,12 +12,24 @@ const fetchPost = (id) => {
 export default async function Post({params}){
     const {id} = params
     const post = await fetchPost(id)
-    console.log(post)
     return (
-            <div>
-                <h1>Post {id}</h1>
-                <h2>{post.title}</h2>
-                <div>{post.body}</div>
-            </div>
-        )
+        <article>
+        <div>
+            Post {post.id}
+        </div>
+        <rb/>
+        <div>
+            {post.title}
+        </div>
+        <rb/>
+        <div>
+            {post.body}
+        </div>
+        <rb/>
+        <div>
+            <Link href={`http://localhost:3000/posts/${id}/comments`}>Comments</Link>
+        </div>
+        
+        </article>
+    )
 }
