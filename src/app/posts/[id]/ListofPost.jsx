@@ -13,7 +13,9 @@ const fetchPosts = () => {
 export default async function ListofPosts(){
     const posts = await fetchPosts()
     return (
-        posts.map(post => (
+            <div>
+                <small>Home &bull; Posts</small>
+        {posts.map(post => (
             <article key={post.id}>
                 <Link href={`/posts/${post.id}`}>
                     <h2 style={{color: '#09f'}}>{post.title}</h2>
@@ -21,6 +23,7 @@ export default async function ListofPosts(){
                 <p>{post.body}</p>
                 <LikeButton id={post.id}/>
             </article>
-        ))
+        ))}
+            </div>
     )
 }
